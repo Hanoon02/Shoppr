@@ -1,7 +1,10 @@
 import express from 'express'
 import mysql from 'mysql2'
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
 const app = express();
-
+const cors = require('cors')
+app.use(cors())
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -9,12 +12,15 @@ const db = mysql.createConnection({
     database: 'shoppr'
 });
 
-app.get('/' , (req, res) => {
-    const q = 'SELECT * FROM shoppr.customer';
+
+
+app.get('/products' , (req, res) => {
+    const q = 'SELECT * FROM shoppr.product';
     db.query(q, (err, result) => {
         if(err) throw err;
         res.send(result);
-    });
+    }
+    );
 });
 
 app.listen(8800, () => {
