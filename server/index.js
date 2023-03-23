@@ -23,11 +23,32 @@ app.get('/products' , (req, res) => {
     );
 });
 
-app.get('/login' , (req, res) => {
+app.get('/customer/login' , (req, res) => {
     const username = req.query.username;
     const password = req.query.password;
     const q = 'SELECT * FROM shoppr.customer WHERE Customer_Username = ? AND Customer_Password = ?';
     db.query(q, [username, password], (err, result) => {
+            if(err) throw err;
+            res.send(result);
+        }
+    );
+});
+
+app.get('/vendor/login' , (req, res) => {
+    const username = req.query.username;
+    const password = req.query.password;
+    const q = 'SELECT * FROM shoppr.vendor WHERE Vendor_Username = ? AND Vendor_Password = ?';
+    db.query(q, [username, password], (err, result) => {
+            if(err) throw err;
+            res.send(result);
+        }
+    );
+});
+
+app.get('/vendor/info' , (req, res) => {
+    const username = req.query.username;
+    const q = 'SELECT * FROM shoppr.vendor WHERE Vendor_Username = ?';
+    db.query(q, [username], (err, result) => {
             if(err) throw err;
             res.send(result);
         }
