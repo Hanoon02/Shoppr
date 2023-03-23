@@ -23,6 +23,17 @@ app.get('/products' , (req, res) => {
     );
 });
 
+app.get('/login' , (req, res) => {
+    const username = req.query.username;
+    const password = req.query.password;
+    const q = 'SELECT * FROM shoppr.customer WHERE Customer_Username = ? AND Customer_Password = ?';
+    db.query(q, [username, password], (err, result) => {
+            if(err) throw err;
+            res.send(result);
+        }
+    );
+});
+
 app.listen(8800, () => {
     console.log('Server is running on port 8800');
 });
