@@ -2,6 +2,7 @@ import React, {useEffect, useState, useContext} from "react";
 import NavBar from "../Components/NavBar";
 import ProductCard from "../Components/ProductCard";
 import loginContext from "../Context/loginContext";
+import axios from "axios";
 export default function VendorHome() {
     const [allProducts, setAllProducts] = useState([]);
     const info = useContext(loginContext);
@@ -10,7 +11,17 @@ export default function VendorHome() {
     }, []);
 
     const fetchProducts = async () => {
-
+        try{
+            const res = await axios.get('http://localhost:8800/vendor/products', {
+                params: {
+                    id: info.state.id
+                }
+            });
+            setAllProducts(res.data);
+        }
+        catch(err){
+            console.error(err);
+        }
     }
 
     return (

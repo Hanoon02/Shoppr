@@ -16,11 +16,11 @@ export default function NavBar(){
                     <p className={'text-2xl font-bold'}>Shoppr</p>
                 </div>
                 <div className={'flex items-center'}>
-                    <p className={'text-lg px-5'}>Categories</p>
-                    <p className={'text-lg px-5'}>Deals</p>
+                    <p className={'text-xl px-2'}><Link to={'/cart'}>Cart</Link></p>
+                    <p className={'text-xl px-2'}>{info.state.name}</p>
                     <p className={'text-lg px-5 font-bold'} onClick={()=> handleLogout()}>
                         <Link to={'/'}>
-                            {info.state.name !== "" ? info.state.name : 'Login'}
+                            {info.state.name !== "" ? 'Logout' : 'Login'}
                         </Link>
                     </p>
                 </div>

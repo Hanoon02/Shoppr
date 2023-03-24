@@ -12,8 +12,6 @@ const db = mysql.createConnection({
     database: 'shoppr'
 });
 
-
-
 app.get('/products' , (req, res) => {
     const q = 'SELECT * FROM shoppr.product';
     db.query(q, (err, result) => {
@@ -28,6 +26,21 @@ app.get('/customer/login' , (req, res) => {
     const password = req.query.password;
     const q = 'SELECT * FROM shoppr.customer WHERE Customer_Username = ? AND Customer_Password = ?';
     db.query(q, [username, password], (err, result) => {
+            if(err) throw err;
+            res.send(result);
+        }
+    );
+});
+
+app.post('/customer/signup' , (req, res) => {
+    const id = 10000000;
+    const name = "apple";
+    const username = "apple";
+    const password = "apple";
+    const address = "apple";
+    const payment = "apple";
+    const q = 'INSERT INTO shoppr.customer (Customer_ID, Customer_Name, Customer_Username, Customer_Password, Customer_Address, Customer_Payment) VALUES (?, ?, ?, ?, ?, ?)';
+    db.query(q, [id, name, username, password, address, payment], (err, result) => {
             if(err) throw err;
             res.send(result);
         }
@@ -54,6 +67,17 @@ app.get('/vendor/info' , (req, res) => {
         }
     );
 });
+
+app.get('/vendor/products' , (req, res) => {
+    const vendor_id = req.query.id;
+    const q = 'SELECT * FROM shoppr.product WHERE Vendor_ID = ?';
+    db.query(q, [vendor_id], (err, result) => {
+            if(err) throw err;
+            res.send(result);
+        }
+    );
+});
+
 
 app.listen(8800, () => {
     console.log('Server is running on port 8800');
