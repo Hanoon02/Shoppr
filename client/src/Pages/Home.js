@@ -7,7 +7,7 @@ export default function HomePage(){
     const [allProducts, setAllProducts] = useState([]);
     const [allCategoryIDs, setAllCategoryIDs] = useState([]);
     const [allCategoryNames, setAllCategoryNames] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState(allCategoryIDs);
+    const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedFilter, setSelectedFilter] = useState("all");
 
     useEffect(() => {
@@ -27,6 +27,7 @@ export default function HomePage(){
             });
             setAllCategoryIDs(categoryIDs);
             setAllCategoryNames(categoryNames);
+            setSelectedCategory(categoryIDs);
         }
         catch(err){
             console.error(err);
@@ -78,7 +79,7 @@ export default function HomePage(){
                                 fetchProducts(selectedFilter, e.target.value);
                             }}
                         >
-                            <option value ='all'>All Categories</option>
+                            <option value ={allCategoryIDs}>All Categories</option>
                             {allCategoryNames.map((category) => (
                                 <option value={allCategoryIDs[allCategoryNames.indexOf(category)]}>{category}</option>
                             ))}

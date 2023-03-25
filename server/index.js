@@ -37,10 +37,10 @@ app.get('/products/filter' , (req, res) => {
     const filter = req.query.filter;
     const category = req.query.category;
     var q;
-    if(filter === '<1000') q = 'SELECT * FROM shoppr.product WHERE Price < 1000';
-    else if(filter === '1000-5000') q = 'SELECT * FROM shoppr.product WHERE Price >= 1000 AND Price <= 5000';
-    else if(filter === '5000-10000') q = 'SELECT * FROM shoppr.product WHERE Price >= 5000 AND Price <= 10000';
-    else if(filter === '>10000') q = 'SELECT * FROM shoppr.product WHERE Price > 10000';
+    if(filter === '<1000') q = 'SELECT * FROM shoppr.product WHERE Price < 1000 AND Category_ID IN (' + category + ')';
+    else if(filter === '1000-5000') q = 'SELECT * FROM shoppr.product WHERE Price >= 1000 AND Price <= 5000 AND Category_ID IN (' + category + ')';
+    else if(filter === '5000-10000') q = 'SELECT * FROM shoppr.product WHERE Price >= 5000 AND Price <= 10000 AND Category_ID IN (' + category + ')';
+    else if(filter === '>10000') q = 'SELECT * FROM shoppr.product WHERE Price > 10000 AND Category_ID IN (' + category + ')';
 
     db.query(q, (err, result) => {
         if(err) throw err;
