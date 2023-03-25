@@ -2,6 +2,7 @@ import React, {useContext, useState} from "react";
 import {Link} from "react-router-dom";
 import loginContext from "../Context/loginContext";
 import {ReactComponent as CartSVG} from "../Assets/cart.svg";
+import {ReactComponent as ProfileSVG} from "../Assets/user.svg";
 
 export default function NavBar(){
     const info = useContext(loginContext);
@@ -17,7 +18,10 @@ export default function NavBar(){
                 </div>
                 <div className={'flex items-center'}>
                     {info.state.name !== '' &&
-                        <p className={'text-xl px-2'}><Link to={'/cart'}><CartSVG/></Link></p>
+                        <>
+                            <p className={'text-xl px-2'}><Link to={'/cart'}><CartSVG/></Link></p>
+                            <p className={'text-xl px-2'}><Link to={'/profile'}><ProfileSVG/></Link></p>
+                        </>
                     }
                     <p className={'text-lg px-5 font-bold'}>
                         <Link to={'/'}>

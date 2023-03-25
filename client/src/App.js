@@ -4,6 +4,7 @@ import HomePage from "./Pages/Home";
 import VendorHome from "./Pages/VendorHome";
 import LoginState from "./Context/loginState";
 import Cart from "./Pages/Cart";
+import ProfilePage from "./Pages/Profile";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
                     <Route path={'/home'} element={<HomePage/>}/>
                     <Route path={'/vendor'} element={<VendorHome/>}/>
                     <Route path={'/cart'} element={<Cart/>}/>
+                    <Route path={'/profile'} element={<ProfilePage/>}/>
                 </Routes>
             </BrowserRouter>
         </LoginState>
