@@ -112,7 +112,8 @@ app.get('/vendor/products' , (req, res) => {
 
 app.get('/cart/products' , (req, res) => {
     const customer_id = req.query.id;
-    const q = 'SELECT * FROM shoppr.product WHERE Product_ID IN (SELECT Product_ID FROM shoppr.cart WHERE Cart_ID = ?)';
+    //return product and its quantity
+    const q = 'SELECT Product.Product_ID, Product.Product_Name, Product.Price, Cart.Quantity FROM shoppr.product INNER JOIN shoppr.cart ON Product.Product_ID = Cart.Product_ID WHERE Cart.Cart_ID = ?';
     db.query(q, [customer_id], (err, result) => {
             if(err) throw err;
             res.send(result);
@@ -121,18 +122,26 @@ app.get('/cart/products' , (req, res) => {
 });
 
 app.post('/cart/add', express.json(), (req, res) => {
-    const productID = 0;
-    const cartID = 0;
-    const quantity = 1;
-    console.error(req.body);
-    if(productID !== undefined && cartID !== undefined) {
-        const q = 'INSERT INTO shoppr.cart (Cart_ID, Product_ID, Quantity) VALUES (?, ?, ?)';
-        db.query(q, [cartID, productID, quantity], (err, result) => {
-                if (err) throw err;
-                res.send(result);
-            }
-        );
-    }
+    const productID = req.body.params.productID;
+    const cartID = req.body.params.userID;
+    const quantity = req.body.params.quantity;
+    const q = 'INSERT INTO shoppr.cart (Cart_ID, Product_ID, Quantity) VALUES (?, ?, ?)';
+    db.query(q, [cartID, productID, quantity], (err, result) => {
+            if (err) throw err;
+            res.send(result);
+        }
+    );
+});
+
+app.delete('/cart/remove', express.json(), (req, res) => {
+    const productID = req.query.productID;
+    const cartID = req.query.userID;
+    const q = 'DELETE FROM shoppr.cart WHERE Cart_ID = ? AND Product_ID = ?';
+    db.query(q, [cartID, productID], (err, result) => {
+            if (err) throw err;
+            res.send(result);
+        }
+    );
 });
 
 app.get('/orders' , (req, res) => {

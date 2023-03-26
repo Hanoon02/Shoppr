@@ -31,9 +31,10 @@ export default function VendorHome() {
             </div>
             <div>
                 <p className={'text-2xl font-bold text-center pt-10'}>Welcome to your Vendor Dashboard - {info.state.name}</p>
+                <p className={'text-xl pl-3'}>Your products: </p>
                 <div className={'grid grid-cols-4 pt-4'}>
                     {allProducts.map((product) => (
-                        <div className={'px-2 py-4'}><ProductCard product={product} /></div>
+                        <div className={'px-2 py-2'}><ProductCard product={product} /></div>
                     ))}
                 </div>
             </div>

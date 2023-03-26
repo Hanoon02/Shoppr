@@ -24,7 +24,7 @@ export default function Cart() {
             if(res.data.length > 0) {
                 var total = 0;
                 res.data.forEach((product) => {
-                    total += product.Price;
+                    total += product.Price * product.Quantity;
                 });
                 setTotal(total);
                 setProducts(res.data);
