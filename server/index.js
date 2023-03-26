@@ -110,6 +110,21 @@ app.get('/vendor/products' , (req, res) => {
     );
 });
 
+app.post('/vendor/add' , (req, res) => {
+    const vendor_id = req.body.params.vendor_id;
+    const product_id = req.body.params.product_id;
+    const product_name = req.body.params.product_name;
+    const product_price = req.body.params.product_price;
+    const product_category = req.body.params.product_category;
+    const product_warehouse = 3;
+    const q = 'INSERT INTO shoppr.product (Product_ID, Product_Name, Price, Warehouse_ID, Vendor_ID, Category_ID) VALUES (?, ?, ?, ?, ?, ?)';
+    db.query(q, [product_id, product_name, product_price, product_warehouse, vendor_id, product_category], (err, result) => {
+            if(err) throw err;
+            res.send(result);
+        }
+    );
+});
+
 app.get('/cart/products' , (req, res) => {
     const customer_id = req.query.id;
     //return product and its quantity

@@ -3,6 +3,7 @@ import loginContext from "../Context/loginContext";
 import NavBar from "../Components/NavBar";
 import axios from "axios";
 import OrderPreviewCard from "../Components/OrderPreviewCard";
+import * as URL from "../Config/urls";
 
 export default function ProfilePage(){
     const [orders, setOrders] = useState([]);
@@ -18,7 +19,7 @@ export default function ProfilePage(){
 
     const fetchOrders = async () => {
         try{
-            const res = await axios.get('http://localhost:8800/orders', {
+            const res = await axios.get(URL.GET_ORDERS, {
                 params: {
                     user: id
                 }
