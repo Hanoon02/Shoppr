@@ -65,12 +65,12 @@ app.get('/customer/login' , (req, res) => {
 });
 
 app.post('/customer/signup' , (req, res) => {
-    const id = 10000000;
-    const name = "apple";
-    const username = "apple";
-    const password = "apple";
-    const address = "apple";
-    const payment = "apple";
+    const id = req.body.params.id;
+    const name = req.body.params.name;
+    const username = req.body.params.username;
+    const password = req.body.params.password;
+    const address = req.body.params.address;
+    const payment = req.body.params.payment;
     const q = 'INSERT INTO shoppr.customer (Customer_ID, Customer_Name, Customer_Username, Customer_Password, Customer_Address, Customer_Payment) VALUES (?, ?, ?, ?, ?, ?)';
     db.query(q, [id, name, username, password, address, payment], (err, result) => {
             if(err) throw err;

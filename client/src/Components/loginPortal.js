@@ -111,7 +111,7 @@ export default function Portal(){
                         </div>
                         <div className={'py-2 pr-10'}>
                             <p className={'pb-2'}>Password</p>
-                            <input id={'password'} className={'w-full py-1 rounded-lg border border-[0.5px] border-black pl-2'}/>
+                            <input id={'password'} type={'password'} className={'w-full py-1 rounded-lg border border-[0.5px] border-black pl-2'}/>
                         </div>
                         <div className={'flex justify-center items-center pt-2 pr-10'}>
                             <button className={'bg-green-400 border border-black rounded-xl p-2 px-5'} type={"submit"}>
