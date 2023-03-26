@@ -110,7 +110,7 @@ export default function VendorHome() {
             }
             <div>
                 <div className={'flex item-center justify-between'}>
-                    <p className={'text-2xl pl-5 pt-5'}>Welcome to your Vendor Dashboard - </p>
+                    <p className={'text-2xl pl-5 pt-5'}>Your products - </p>
                     <div>
                         <button className={'bg-green-300 text-xl p-2 px-5 border border-black rounded-lg mt-5 mr-10'} onClick={()=>{setAddProductModal(true)}}>Add Product</button>
                     </div>

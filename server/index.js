@@ -53,6 +53,22 @@ app.get('/products/filter' , (req, res) => {
     );
 });
 
+app.put('/products/update', (req, res) => {
+    const productID = req.body.params.productID;
+    const productName = req.body.params.productName;
+    const productPrice = req.body.params.productPrice;
+    const categoryID = req.body.params.categoryID;
+    const vendorID = req.body.params.vendorID;
+    const warehouseID = 4;
+    console.error(productID, productName, productPrice, categoryID, vendorID, warehouseID);
+    const q = `UPDATE shoppr.product SET Product_Name = ?, Price = ?, Category_ID = ?, Vendor_ID = ?, Warehouse_ID = ? WHERE Product_ID = ?`;
+    db.query(q, [productName, productPrice, categoryID, vendorID, warehouseID, productID], (err, result) => {
+        if(err) throw err;
+        res.send(result);
+        }
+    );
+});
+
 app.get('/customer/login' , (req, res) => {
     const username = req.query.username;
     const password = req.query.password;

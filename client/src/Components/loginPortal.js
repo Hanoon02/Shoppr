@@ -64,7 +64,7 @@ export default function Portal(){
                     }
                 });
                 if (res.data.length > 0) {
-                    info.update(res.data[0].Customer_ID, res.data[0].Customer_Name, res.data[0].Customer_Username, res.data[0].Customer_Password, res.data[0].Customer_Address);
+                    info.update(res.data[0].Customer_ID, res.data[0].Customer_Name, res.data[0].Customer_Username, res.data[0].Customer_Password, res.data[0].Customer_Address, "customer");
                     navigation('/home');
                 } else setLoggedIn(true);
             } catch (err) {
@@ -80,7 +80,7 @@ export default function Portal(){
                     }
                 });
                 if (res.data.length > 0) {
-                    info.update(res.data[0].Vendor_ID, res.data[0].Vendor_Name, res.data[0].Vendor_Username, res.data[0].Vendor_Password, "");
+                    info.update(res.data[0].Vendor_ID, res.data[0].Vendor_Name, res.data[0].Vendor_Username, res.data[0].Vendor_Password, "", "vendor");
                     navigation('/vendor');
                 } else setLoggedIn(true);
             } catch (err) {

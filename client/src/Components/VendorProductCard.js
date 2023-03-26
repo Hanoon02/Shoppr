@@ -6,7 +6,6 @@ export default function VendorProductCard({product}) {
     const [productCategory, setProductCategory] = useState('');
     const [allCategoryIDs, setAllCategoryIDs] = useState([]);
     const [allCategoryNames, setAllCategoryNames] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState('');
     const [options, setOptions] = useState(false);
     const [edit, setEdit] = useState(false);
 
@@ -28,6 +27,29 @@ export default function VendorProductCard({product}) {
             const categoryID = product.Category_ID;
             const category = res.data.filter((category) => category.Category_ID === categoryID);
             setProductCategory(category[0].Category_Name);
+        }
+        catch(err){
+            console.error(err);
+        }
+    }
+    const handleUpdate = async (e) => {
+        e.preventDefault();
+        const productID = product.Product_ID;
+        const newName = e.target.name.value;
+        const newPrice = e.target.price.value;
+        const newCategory = e.target.category.value;
+        const vendorID = product.Vendor_ID;
+        try{
+            const res = await axios.put(URL.UPDATE_VENDOR_PRODUCT, {
+                params: {
+                    productID: productID,
+                    productName: newName,
+                    productPrice: newPrice,
+                    categoryID: newCategory,
+                    vendorID: vendorID
+                }
+            });
+            setEdit(false);
         }
         catch(err){
             console.error(err);
@@ -59,37 +81,37 @@ export default function VendorProductCard({product}) {
                 </div>
             : options && edit ?
                 <div className={'h-64'}>
-                    <div className={'pl-5 py-5'}>
-                        <form>
-                            <div className={'flex py-2'}>
-                                <p className={'pr-2 pt-1'}> Name: </p>
-                                <input type={'text'} className={'border border-black rounded w-full mr-8 py-1 pl-2'} placeholder={product.Product_Name}/>
-                            </div>
-                            <div className={'flex py-2'}>
-                                <p className={'pr-2 pt-1'}> Price: </p>
-                                <input type={'text'} className={'border border-black rounded w-full mr-8 py-1 pl-2'} placeholder={product.Price}/>
-                            </div>
-                            <div className={'flex py-2'}>
-                                <p className={'pr-2 pt-1'}> Category: </p>
-                                <select
-                                    className="w-full p-1 border border-black rounded-md outline-none appearance-none mr-8"
-                                    onChange={(e) => {setSelectedCategory(e.target.value);}}>
-                                    {allCategoryNames.map((category) => {
-                                        if(category === productCategory){
-                                            return <option selected value={allCategoryIDs[allCategoryNames.indexOf(category)]}>{category}</option>
-                                        }
-                                        else{
-                                            return <option value={allCategoryIDs[allCategoryNames.indexOf(category)]}>{category}</option>
-                                        }
-                                    })}
-                                </select>
-                            </div>
-                        </form>
-                    </div>
-                    <div className={'flex'}>
-                        <button className={'border border-black ml-5 p-3 px-8 rounded-xl bg-green-400'} onClick={()=>setEdit(false)}>Change</button>
-                        <button className={'border border-black ml-3 p-3 px-8 rounded-xl bg-red-500'} onClick={()=>setEdit(false)}>Back</button>
-                    </div>
+                    <form onSubmit={handleUpdate}>
+                        <div className={'pl-5 py-5'}>
+                                <div className={'flex py-2'}>
+                                    <p className={'pr-2 pt-1'}> Name: </p>
+                                    <input type={'text'} className={'border border-black rounded w-full mr-8 py-1 pl-2'} placeholder={product.Product_Name} id={'name'} />
+                                </div>
+                                <div className={'flex py-2'}>
+                                    <p className={'pr-2 pt-1'}> Price: </p>
+                                    <input type={'text'} className={'border border-black rounded w-full mr-8 py-1 pl-2'} placeholder={product.Price} id={'price'}/>
+                                </div>
+                                <div className={'flex py-2'}>
+                                    <p className={'pr-2 pt-1'}> Category: </p>
+                                    <select
+                                        className="w-full p-1 border border-black rounded-md outline-none appearance-none mr-8"
+                                        id={'category'}>
+                                        {allCategoryNames.map((category) => {
+                                            if(category === productCategory){
+                                                return <option selected value={allCategoryIDs[allCategoryNames.indexOf(category)]}>{category}</option>
+                                            }
+                                            else{
+                                                return <option value={allCategoryIDs[allCategoryNames.indexOf(category)]}>{category}</option>
+                                            }
+                                        })}
+                                    </select>
+                                </div>
+                        </div>
+                        <div className={'flex'}>
+                            <button className={'border border-black ml-5 p-3 px-8 rounded-xl bg-green-400'} type={'submit'}>Change</button>
+                            <button className={'border border-black ml-3 p-3 px-8 rounded-xl bg-red-500'} onClick={()=>setEdit(false)}>Back</button>
+                        </div>
+                    </form>
                 </div>
             : null}
             </div>

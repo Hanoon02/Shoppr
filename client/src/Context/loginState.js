@@ -8,15 +8,17 @@ const LoginState = (props) => {
         "username": "",
         "password": "",
         "address": "",
+        "type": "",
     }
     const [state, setState] = React.useState(initialState);
-    const update = (id, name, username, password, address) => {
+    const update = (id, name, username, password, address, type) => {
         setState({
             "id": id,
             "name": name,
             "username": username,
             "password": password,
-            "address": address
+            "address": address,
+            "type": type,
         })
     }
 
