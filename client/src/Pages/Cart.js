@@ -41,7 +41,6 @@ export default function Cart() {
         </div>
         <div className={""}>
             <p className={"text-2xl font-bold text-center pt-10"}>Cart</p>
-            <p className={'pl-[20px] text-xl'}> Your Items: </p>
             {products.map((product) => (
                 <div className={"pt-4 px-[40px]"}>
                     <CartCard product={product} />
@@ -49,11 +48,10 @@ export default function Cart() {
             ))}
         </div>
         <hr className={'border border-black mx-[150px] mt-8'}/>
-        <div className={'text-xl flex justify-between items-center px-[80px]'}>
-            <p>Total:</p>
+        <div className={'text-xl flex justify-between items-center px-[80px] py-10'}>
+            <div className={'flex text-[26px]'}>Total:<p className={'px-2 italic text-[#BC4C2A]'}>${total}</p></div>
             <div>
-                <p className={'pt-5'}>{total} $</p>
-                <button className={'bg-black text-white text-xl font-bold px-4 rounded-lg mt-4'}>Checkout</button>
+                <button className={'border border-1 border-[#BC4C2A] py-5 px-10 mt-4'}>Checkout</button>
             </div>
         </div>
     </>

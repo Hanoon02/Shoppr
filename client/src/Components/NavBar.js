@@ -12,10 +12,10 @@ export default function NavBar(){
     return(
         <>
             <div className={'h-[75px] flex justify-between items-center px-10'}>
-                <div>
-                    <input type={'text'} placeholder={'Search...'} className={'border border-black rounded-md px-2'}/>
+                <div className={'text-[#BC4C2A]'}>
+                    <input type={'text'} placeholder={'Search...'} className={'border border-b-[#BC4C2A] border-white px-2 pb-2'}/>
                 </div>
-                <div className={'flex items-center'}>
+                <div className={'flex items-center italic'}>
                     <p className={'text-[40px] text-[#BC4C2A]'}>
                         {type==="customer" ? <Link to={'/home'}>Shoppr</Link> : <Link to={'/vendor'}>Shoppr</Link>}
                     </p>

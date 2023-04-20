@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import ProductCard from "../../Components/ProductCard";
 import NavBar from "../../Components/NavBar";
+import Footer from "../../Components/Footer";
 
 
 export default function ShopAll(){
@@ -67,49 +68,54 @@ export default function ShopAll(){
         <>
             <div>
                 <NavBar />
+                <p className={'py-10 text-[50px] text-center font-bold'}> Shop All</p>
             </div>
-            <div className={'flex flex justify-between items-center'}>
-                <div className={'flex'}>
-                    <p className={'text-lg pl-[10px] pt-3'}>Categories - </p>
-                    <div className="relative lg:max-w-sm pt-2 pl-3">
-                        <select
-                            className="w-full p-1 border rounded-md shadow-sm outline-none appearance-none"
-                            onChange={(e) => {
-                                setSelectedCategory(e.target.value);
-                                fetchProducts(selectedFilter, e.target.value);
-                            }}
-                        >
-                            <option value ={allCategoryIDs}>All Categories</option>
-                            {allCategoryNames.map((category) => (
-                                <option value={allCategoryIDs[allCategoryNames.indexOf(category)]}>{category}</option>
-                            ))}
-                        </select>
+            <div className={'flex'}>
+                <div className={'flex w-1/5 flex-col pl-5'}>
+                    <p className={'pl-5 text-2xl font-semibold text-[#BC4C2A] pt-4'}>Filter By</p>
+                    <div className={'flex flex-col py-3'}>
+                        <p className={'text-lg pl-[10px] pt-3'}>Category</p>
+                        <div className="relative lg:max-w-sm pt-2 pl-3">
+                            <select
+                                className="w-full p-1 border rounded-md shadow-sm outline-none appearance-none"
+                                onChange={(e) => {
+                                    setSelectedCategory(e.target.value);
+                                    fetchProducts(selectedFilter, e.target.value);
+                                }}
+                            >
+                                <option value ={allCategoryIDs}>All Categories</option>
+                                {allCategoryNames.map((category) => (
+                                    <option value={allCategoryIDs[allCategoryNames.indexOf(category)]}>{category}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    <div className={'flex flex-col py-3 pl-3'}>
+                        <p className={"text-lg px-2 pt-3"}>Price</p>
+                        <div className="relative lg:max-w-sm pt-2">
+                            <select
+                                className="w-full p-1.5 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-black"
+                                onChange={(e) => {
+                                    setSelectedFilter(e.target.value);
+                                    fetchProducts(e.target.value, selectedCategory);
+                                }}
+                            >
+                                <option value ='all'>All Items</option>
+                                <option value ='<1000'>Less than 1,000</option>
+                                <option value ='1000-5000'>1,000 - 5,000</option>
+                                <option value ='5000-10000'>5,000 - 10,000</option>
+                                <option value = '>10000'>More than 10,000</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div className={'flex pr-3'}>
-                    <p className={"text-lg px-2 pt-3"}>Filter - </p>
-                    <div className="relative lg:max-w-sm pt-2">
-                        <select
-                            className="w-full p-1.5 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-black"
-                            onChange={(e) => {
-                                setSelectedFilter(e.target.value);
-                                fetchProducts(e.target.value, selectedCategory);
-                            }}
-                        >
-                            <option value ='all'>All Items</option>
-                            <option value ='<1000'>Less than 1,000</option>
-                            <option value ='1000-5000'>1,000 - 5,000</option>
-                            <option value ='5000-10000'>5,000 - 10,000</option>
-                            <option value = '>10000'>More than 10,000</option>
-                        </select>
-                    </div>
+                <div className={'grid grid-cols-3 pt-2 w-4/5'}>
+                    {allProducts.map((product) => (
+                        <div className={'py-4'}><ProductCard product={product} /></div>
+                    ))}
                 </div>
             </div>
-            <div className={'grid grid-cols-4 pt-2'}>
-                {allProducts.map((product) => (
-                    <div className={'px-2 py-4'}><ProductCard product={product} /></div>
-                ))}
-            </div>
+            <Footer />
         </>
     )
 }

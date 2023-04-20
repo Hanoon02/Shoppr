@@ -12,7 +12,12 @@ export default function HomePage(){
                 <NavBar />
             </div>
             <div>
-                <img className={'h-[800px] w-full'} src={'https://images6.alphacoders.com/108/1089136.jpg'} alt={'storebg'}/>
+                <div className={'flex flex-col justify-center items-center'}>
+                    <div className={'absolute flex flex-col justify-center items-center'}>
+                        <p className={'text-center text-[80px] font-bold '}>The best way to buy the products you love</p>
+                    </div>
+                    <img className={'h-[800px] w-full'} src={'https://wallpapercave.com/wp/wp2174648.jpg'} alt={'storebg'}/>
+                </div>
             </div>
             <div>
                 <BestSeller />
@@ -23,9 +28,8 @@ export default function HomePage(){
             <div className={'pt-24'}>
                 <Info />
             </div>
-            <div>
-                <Footer />
-            </div>
+            <Footer />
+
         </div>
     )
 }

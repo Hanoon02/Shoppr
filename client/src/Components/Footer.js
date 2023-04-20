@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer(){
     return(
         <div className={'flex justify-around pt-10 pb-3'}>
-            <div className={'text-3xl text-[#BC4C2A]'}> Shoppr </div>
+            <div className={'text-3xl text-[#BC4C2A] italic'}> Shoppr </div>
             <div className={'text-center'}>
                 <p className={'py-2'}>Home</p>
                 <p className={'py-2'}>Shop All</p>

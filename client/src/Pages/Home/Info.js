@@ -10,7 +10,7 @@ export default function Info(){
                 <img src={'https://c4.wallpaperflare.com/wallpaper/973/187/679/ps4-game-console-sony-playstation-4-wallpaper-preview.jpg'} alt={'info'} className={'h-[250px] w-1/5'}/>
                 <img src={'https://cdn.wccftech.com/wp-content/uploads/2017/06/PIMAX-4K-VR-IMG_0542.jpg'} alt={'info'} className={'h-[250px] w-1/5'}/>
             </div>
-            <div className={'py-10 flex justify-evenly items-center text-2xl text-[#BC4C2A]'}>
+            <div className={'italic py-10 flex justify-evenly items-center text-2xl text-[#BC4C2A]'}>
                 <div className={'flex flex-col justify-center items-center'}>
                     <p>Worldwide Shipping</p>
                 </div>

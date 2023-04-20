@@ -8,7 +8,7 @@ export default function BestSellerCard({product}){
             </div>
             <div className={'flex flex-col justify-center items-center pt-5'}>
                 <p>{product.name}</p>
-                <p className={'text-[#BC4C2A] text-xl'}>${product.price}</p>
+                <p className={'text-[#BC4C2A] text-xl italic'}>${product.price}</p>
             </div>
         </div>
     )

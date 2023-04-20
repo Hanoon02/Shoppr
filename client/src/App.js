@@ -6,6 +6,7 @@ import LoginState from "./Context/loginState";
 import Cart from "./Pages/Cart";
 import ProfilePage from "./Pages/Profile";
 import ShopAll from "./Pages/ShopAll/ShopAll";
+import Footer from "./Components/Footer";
 
 function App() {
   return (

@@ -98,23 +98,23 @@ export default function Portal(){
                         :
                         type === 'customer' ? <p className={'text-[30px] font-bold'}>Customer Signup</p> : <p className={'text-[30px] font-bold'}>Vendor Signup</p>
                     }
-                    <button className={'border border-black px-4 py-2 rounded-md ml-5'} onClick={handlePortalToggle}>{signup ? 'Login' : 'Signup'}</button>
+                    <button className={'border border-1 border-[#BC4C2A] py-3 px-10 ml-5'} onClick={handlePortalToggle}>{signup ? 'Login' : 'Signup'}</button>
                 </div>
                 {loggedIn && <p className={'text-red-500 text-center'}>Invalid Username or Password</p>}
             </div>
             {!signup ?
                 <form onSubmit={handleLoginSubmit}>
-                    <div className={' bg-green-100 pl-10 py-10 rounded-lg border border-[0.5px] border-black'}>
+                    <div className={'py-5'}>
                         <div className={'py-2 pr-10'}>
-                            <p className={'pb-2'}>Username</p>
-                            <input id={'username'} className={'w-full py-1 rounded-lg border border-[0.5px] border-black pl-2'}/>
+                            <p className={'pb-2 text-[26px]'}>Username</p>
+                            <input id={'username'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'}/>
                         </div>
                         <div className={'py-2 pr-10'}>
-                            <p className={'pb-2'}>Password</p>
-                            <input id={'password'} type={'password'} className={'w-full py-1 rounded-lg border border-[0.5px] border-black pl-2'}/>
+                            <p className={'pb-2 text-[26px]'}>Password</p>
+                            <input id={'password'} type={'password'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'}/>
                         </div>
                         <div className={'flex justify-center items-center pt-2 pr-10'}>
-                            <button className={'bg-green-400 border border-black rounded-xl p-2 px-5'} type={"submit"}>
+                            <button className={'border border-1 border-[#BC4C2A] py-2 mt-3 px-10'} type={"submit"}>
                                 Login
                             </button>
                         </div>
@@ -122,38 +122,38 @@ export default function Portal(){
                 </form>
             :
                 <form onSubmit={handleSignupSubmit}>
-                    <div className={'bg-green-100 pl-10 py-10 rounded-lg border border-[0.5px] border-black'}>
+                    <div className={'py-10'}>
                         <div className={'py-2 pr-10'}>
-                            <p className={'pb-2'}>Name</p>
-                            <input id={'name'} className={'w-full py-1 rounded-lg border border-[0.5px] border-black pl-2'}/>
+                            <p className={'pb-2 text-[26px]'}>Name</p>
+                            <input id={'name'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'}/>
                         </div>
                         <div className={'py-2 pr-10'}>
-                            <p className={'pb-2'}>Username</p>
-                            <input id={'username'} className={'w-full py-1 rounded-lg border border-[0.5px] border-black pl-2'}/>
+                            <p className={'pb-2 text-[26px]'}>Username</p>
+                            <input id={'username'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'}/>
                         </div>
                         <div className={'py-2 pr-10'}>
-                            <p className={'pb-2'}>Password</p>
-                            <input id={'password'} className={'w-full py-1 rounded-lg border border-[0.5px] border-black pl-2'}/>
+                            <p className={'pb-2 text-[26px]'}>Password</p>
+                            <input id={'password'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'}/>
                         </div>
                         {type === 'customer' &&
                             <div className={'py-2 pr-10'}>
-                                <p className={'pb-2'}>Address</p>
-                                <input id={'address'} className={'w-full py-1 rounded-lg border border-[0.5px] border-black pl-2'}/>
+                                <p className={'pb-2 text-[26px]'}>Address</p>
+                                <input id={'address'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'}/>
                             </div>
                         }
                         <div className={'flex justify-center items-center pt-2 pr-10'}>
-                            <button className={'bg-green-400 border border-black rounded-xl p-2'} type={"submit"}>
+                            <button className={'border border-1 border-[#BC4C2A] py-2 px-10'} type={"submit"}>
                                 Signup
                             </button>
                         </div>
                     </div>
                 </form>
             }
-            <div className={'py-10'}>
+            <div className={'py-10 pr-10'}>
                 <p className={'text-center'}>OR</p>
             </div>
-            <div className={'pb-[250px] grid justify-items-center'}>
-                <button className={'py-2 rounded-lg px-3 border border-[1.5px] border-black'} onClick={()=> handleTypeToggle()}>
+            <div className={'pr-10 grid justify-items-center'}>
+                <button className={'border border-1 border-[#BC4C2A] py-2 px-10'} onClick={()=> handleTypeToggle()}>
                     {type==='customer' && <>I'm a vendor</>}
                     {type==='vendor' && <>I'm a customer</>}
                 </button>
