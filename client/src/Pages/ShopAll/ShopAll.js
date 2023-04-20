@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
-import NavBar from "../Components/NavBar";
-import ProductCard from "../Components/ProductCard";
+import ProductCard from "../../Components/ProductCard";
+import NavBar from "../../Components/NavBar";
 
-export default function HomePage(){
+
+export default function ShopAll(){
     const [allProducts, setAllProducts] = useState([]);
     const [allCategoryIDs, setAllCategoryIDs] = useState([]);
     const [allCategoryNames, setAllCategoryNames] = useState([]);
@@ -62,9 +63,8 @@ export default function HomePage(){
             }
         }
     }
-
     return(
-        <div>
+        <>
             <div>
                 <NavBar />
             </div>
@@ -110,6 +110,6 @@ export default function HomePage(){
                     <div className={'px-2 py-4'}><ProductCard product={product} /></div>
                 ))}
             </div>
-        </div>
+        </>
     )
 }

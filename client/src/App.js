@@ -1,10 +1,11 @@
 import LoginPage from "./Pages/Login";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import HomePage from "./Pages/Home";
+import HomePage from "./Pages/Home/Home";
 import VendorHome from "./Pages/VendorHome";
 import LoginState from "./Context/loginState";
 import Cart from "./Pages/Cart";
 import ProfilePage from "./Pages/Profile";
+import ShopAll from "./Pages/ShopAll/ShopAll";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
                 <Routes>
                     <Route path={'/'} element={<LoginPage/>}/>
                     <Route path={'/home'} element={<HomePage/>}/>
+                    <Route path={'/shopall'} element={<ShopAll/>}/>
                     <Route path={'/vendor'} element={<VendorHome/>}/>
                     <Route path={'/cart'} element={<Cart/>}/>
                     <Route path={'/profile'} element={<ProfilePage/>}/>
