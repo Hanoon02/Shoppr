@@ -90,8 +90,8 @@ export default function Portal(){
     }
 
     return(
-        <div className={'mx-[100px] my-10 border py-5 pl-10 pr-5 shadow-md'}>
-            <div className={'pb-[10px]'}>
+        <div className={'mx-[100px] w-[700px] my-10 border py-[60px] pl-10 pr-5 shadow-md'}>
+            <div className={''}>
                 <div className={'flex'}>
                     {!signup ?
                         type === 'customer' ? <p className={'text-[30px] font-bold'}>Customer Login</p> : <p className={'text-[30px] font-bold'}>Vendor Login</p>
@@ -104,56 +104,54 @@ export default function Portal(){
             </div>
             {!signup ?
                 <form onSubmit={handleLoginSubmit}>
-                    <div className={'py-5'}>
+                    <div className={'pt-5'}>
                         <div className={'py-2 pr-10'}>
                             <p className={'pb-2 text-[26px]'}>Username</p>
-                            <input id={'username'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'}/>
+                            <input id={'username'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'} required={true}/>
                         </div>
                         <div className={'py-2 pr-10'}>
                             <p className={'pb-2 text-[26px]'}>Password</p>
-                            <input id={'password'} type={'password'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'}/>
+                            <input id={'password'} type={'password'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'} required={true}/>
                         </div>
                         <div className={'flex justify-center items-center pt-2 pr-10'}>
-                            <button className={'border border-1 border-[#BC4C2A] py-2 mt-3 px-10'} type={"submit"}>
+                            <button type={"submit"} className={'text-white w-full h-[50px] bg-[#BC4C2A] my-1 px-4 text-xl'}>
                                 Login
                             </button>
+
                         </div>
                     </div>
                 </form>
             :
                 <form onSubmit={handleSignupSubmit}>
-                    <div className={'py-10'}>
+                    <div className={'pt-5'}>
                         <div className={'py-2 pr-10'}>
                             <p className={'pb-2 text-[26px]'}>Name</p>
-                            <input id={'name'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'}/>
+                            <input id={'name'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'} required={true}/>
                         </div>
                         <div className={'py-2 pr-10'}>
                             <p className={'pb-2 text-[26px]'}>Username</p>
-                            <input id={'username'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'}/>
+                            <input id={'username'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'} required={true}/>
                         </div>
                         <div className={'py-2 pr-10'}>
                             <p className={'pb-2 text-[26px]'}>Password</p>
-                            <input id={'password'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'}/>
+                            <input id={'password'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'} required={true}/>
                         </div>
                         {type === 'customer' &&
                             <div className={'py-2 pr-10'}>
                                 <p className={'pb-2 text-[26px]'}>Address</p>
-                                <input id={'address'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'}/>
+                                <input id={'address'} className={'w-full py-2 border border-[0.5px] border-[#BC4C2A] pl-2'} required={true}/>
                             </div>
                         }
                         <div className={'flex justify-center items-center pt-2 pr-10'}>
-                            <button className={'border border-1 border-[#BC4C2A] py-2 px-10'} type={"submit"}>
+                            <button type={"submit"} className={'text-white w-full h-[50px] bg-[#BC4C2A] my-1 px-4 text-xl'}>
                                 Signup
                             </button>
                         </div>
                     </div>
                 </form>
             }
-            <div className={'py-10 pr-10'}>
-                <p className={'text-center'}>OR</p>
-            </div>
             <div className={'pr-10 grid justify-items-center'}>
-                <button className={'border border-1 border-[#BC4C2A] py-2 px-10'} onClick={()=> handleTypeToggle()}>
+                <button className={'text-white w-full h-[50px] bg-black my-1 px-4 text-xl'} onClick={()=> handleTypeToggle()}>
                     {type==='customer' && <>I'm a vendor</>}
                     {type==='vendor' && <>I'm a customer</>}
                 </button>

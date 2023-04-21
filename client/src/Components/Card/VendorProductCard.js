@@ -58,62 +58,58 @@ export default function VendorProductCard({product}) {
 
     return(
         <>
-            <div className={'border border-black rounded-lg'}>
-            {!options && !edit ?
-                <div className={'flex flex-col items-center'} onClick={()=>setOptions(true)}>
-                    <div className={'flex items-center'}>
-                        <img className={'w-64 h-64 rounded-lg'} src={'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71hIfcIPyxS._SL1500_.jpg'} alt={product.Product_Name} />
-                        <div className={'pl-4'}>
-                            <p className={'text-lg'}>Product ID:- {product.Product_ID}</p>
-                            <p className={'text-lg'}>Product Name:- {product.Product_Name}</p>
-                            <p className={'text-lg'}>Product Price:- {product.Price} $</p>
-                            <p className={'text-lg'}>Product Category:- {productCategory}</p>
+            <div className={''}>
+
+                <div className={'flex items-center justify-evenly'} onClick={()=>setOptions(true)}>
+                    <div className={'w-[400px] h-[500px] bg-[#F6F3EF] grid content-center justify-center'}>
+                        <img className={'w-[300px] h-[300px]'} src={'https://assets.stickpng.com/images/580b57fbd9996e24bc43bfbf.png'} alt={product.Product_Name} />
+                    </div>
+                    <div className={'flex items-start flex-col'}>
+                        {!edit ?<div>
+                            <p className={'text-[80px]'}>{product.Product_Name}</p>
+                            <p className={'text-[30px] italic'}>{productCategory}</p>
+                            <p className={'text-[20px] text-gray-500'}>{product.Product_ID}</p>
+                            <p className={'text-[50px] italic text-[#BC4C2A]'}>${product.Price}</p>
+                        </div>:
+                        <div className={''}>
+                            <form onSubmit={handleUpdate}>
+                                <div className={'py-5'}>
+                                    <div className={'py-2'}>
+                                        <p className={'text-[20px]'}> Name </p>
+                                        <input type={'text'} className={'border border-black w-full mr-8 py-1 pl-2'} placeholder={product.Product_Name} id={'name'} required={true} />
+                                    </div>
+                                    <div className={'py-2'}>
+                                        <p className={'text-[20px]'}> Price </p>
+                                        <input type={'text'} className={'border border-black  w-full mr-8 py-1 pl-2'} placeholder={product.Price} id={'price'} required={true} />
+                                    </div>
+                                    <div className={'py-2'}>
+                                        <p className={'text-[20px] pb-1'}> Category </p>
+                                        <select
+                                            className="w-full p-2 border border-black  outline-none appearance-none mr-8"
+                                            id={'category'}
+                                            required={true}
+                                        >
+                                            {allCategoryNames.map((category) => {
+                                                if(category === productCategory){
+                                                    return <option selected value={allCategoryIDs[allCategoryNames.indexOf(category)]}>{category}</option>
+                                                }
+                                                else{
+                                                    return <option value={allCategoryIDs[allCategoryNames.indexOf(category)]}>{category}</option>
+                                                }
+                                            })}
+                                        </select>
+                                    </div>
+                                </div>
+                                <button className={'border border-black border-1 text-black w-[300px] h-[50px] bg-[#F6F3EF] my-1 px-4 text-xl'} type={'submit'}>Change</button>
+                            </form>
                         </div>
+                        }
+                        <button className={'text-white w-[300px] h-[50px] bg-[#BC4C2A] my-1 px-4 text-xl'} onClick={()=>setEdit(!edit)}>
+                            {edit ? 'Cancel' : 'Edit'}
+                        </button>
+                        <button className={'text-white w-[300px] h-[50px] bg-black my-1 px-4 text-xl'}>Remove</button>
                     </div>
                 </div>
-            : options && !edit ?
-                <div>
-                    <div className={'h-64 flex items-center justify-center'}>
-                        <button className={'border border-black mx-5 p-4 px-8 rounded-xl bg-green-400'} onClick={()=>setEdit(true)}>Edit</button>
-                        <button className={'border border-white mx-5 p-4 px-8 rounded-xl bg-black text-white'}>Remove</button>
-                        <button className={'border border-black mx-5 p-4 px-8 rounded-xl bg-red-500 text-white'} onClick={()=>setOptions(false)}>Back</button>
-                    </div>
-                </div>
-            : options && edit ?
-                <div className={'h-64'}>
-                    <form onSubmit={handleUpdate}>
-                        <div className={'pl-5 py-5'}>
-                                <div className={'flex py-2'}>
-                                    <p className={'pr-2 pt-1'}> Name: </p>
-                                    <input type={'text'} className={'border border-black rounded w-full mr-8 py-1 pl-2'} placeholder={product.Product_Name} id={'name'} />
-                                </div>
-                                <div className={'flex py-2'}>
-                                    <p className={'pr-2 pt-1'}> Price: </p>
-                                    <input type={'text'} className={'border border-black rounded w-full mr-8 py-1 pl-2'} placeholder={product.Price} id={'price'}/>
-                                </div>
-                                <div className={'flex py-2'}>
-                                    <p className={'pr-2 pt-1'}> Category: </p>
-                                    <select
-                                        className="w-full p-1 border border-black rounded-md outline-none appearance-none mr-8"
-                                        id={'category'}>
-                                        {allCategoryNames.map((category) => {
-                                            if(category === productCategory){
-                                                return <option selected value={allCategoryIDs[allCategoryNames.indexOf(category)]}>{category}</option>
-                                            }
-                                            else{
-                                                return <option value={allCategoryIDs[allCategoryNames.indexOf(category)]}>{category}</option>
-                                            }
-                                        })}
-                                    </select>
-                                </div>
-                        </div>
-                        <div className={'flex'}>
-                            <button className={'border border-black ml-5 p-3 px-8 rounded-xl bg-green-400'} type={'submit'}>Change</button>
-                            <button className={'border border-black ml-3 p-3 px-8 rounded-xl bg-red-500'} onClick={()=>setEdit(false)}>Back</button>
-                        </div>
-                    </form>
-                </div>
-            : null}
             </div>
         </>
     )

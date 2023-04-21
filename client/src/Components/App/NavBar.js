@@ -38,19 +38,32 @@ export default function NavBar(){
                     </p>
                 </div>
             </div>
-            <div className={'flex justify-center items-center pb-5 pt-2'}>
-                <div className={'flex justify-between items-center'}>
-                    <div className={'text-xl px-3'}><Link to={'/home'}>
-                        {currentTab===0 ? <p className={'text-[#BC4C2A] '}>Home</p> : <p onClick={()=>setCurrentTab(0)}>Home</p>}
-                    </Link></div>
-                    <div className={'text-xl px-3'}><Link to={'/shopall'}>
-                        {currentTab===1 ? <p className={'text-[#BC4C2A] '}>Shop All</p> : <p onClick={()=>setCurrentTab(1)}>Shop All</p>}
-                    </Link></div>
-                    <div className={'text-xl px-3'}>
-                        {currentTab===2 ? <p className={'text-[#BC4C2A] '}>Contact</p> : <p onClick={()=>setCurrentTab(3)}>Contact</p>}
+            {info.state.type!=="vendor" ?
+                <div className={'flex justify-center items-center pb-5 pt-2'}>
+                    <div className={'flex justify-between items-center'}>
+                        <div className={'text-xl px-3'}><Link to={'/home'}>
+                            {currentTab===0 ? <p className={'text-[#BC4C2A] '}>Home</p> : <p onClick={()=>setCurrentTab(0)}>Home</p>}
+                        </Link></div>
+                        <div className={'text-xl px-3'}><Link to={'/shopall'}>
+                            {currentTab===1 ? <p className={'text-[#BC4C2A] '}>Shop All</p> : <p onClick={()=>setCurrentTab(1)}>Shop All</p>}
+                        </Link></div>
+                        <div className={'text-xl px-3'}>
+                            {currentTab===2 ? <p className={'text-[#BC4C2A] '}>Contact</p> : <p onClick={()=>setCurrentTab(3)}>Contact</p>}
+                        </div>
                     </div>
                 </div>
-            </div>
+                :
+                <div className={'flex justify-center items-center pb-5 pt-2'}>
+                    <div className={'flex justify-between items-center'}>
+                        <div className={'text-xl px-3'}><Link to={'/vendor'}>
+                            {currentTab===0 ? <p className={'text-[#BC4C2A] '}>Products</p> : <p onClick={()=>setCurrentTab(0)}>Products</p>}
+                        </Link></div>
+                        <div className={'text-xl px-3'}>
+                            {currentTab===1 ? <p className={'text-[#BC4C2A] '}>Reports</p> : <p onClick={()=>setCurrentTab(3)}>Reports</p>}
+                        </div>
+                    </div>
+                </div>
+            }
         </>
     )
 }

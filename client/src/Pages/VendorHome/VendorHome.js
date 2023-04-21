@@ -4,6 +4,8 @@ import loginContext from "../../Context/Login/loginContext";
 import axios from "axios";
 import * as URL from "../../Config/urls";
 import VendorProductCard from "../../Components/Card/VendorProductCard";
+import {ReactComponent as AddSVG} from "../../Assets/add.svg";
+
 
 export default function VendorHome() {
     const [allProducts, setAllProducts] = useState([]);
@@ -81,28 +83,28 @@ export default function VendorHome() {
             </div>
             {addProductModal &&
                 <div className={"fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50"}>
-                    <div className={"fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[350px] bg-white rounded-lg z-50"}>
-                        <div className={"flex justify-between items-center px-4 py-2"}>
-                            <p className={"text-xl"}>Add Product</p>
-                            <button onClick={() => setAddProductModal(false)} className={"text-2xl font-bold"}>X</button>
+                    <div className={"fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[400px] bg-white z-50"}>
+                        <div className={"text-center px-4 py-2"}>
+                            <p className={"text-[26px]"}>Add Product</p>
                         </div>
                         <hr className={"border border-black"}/>
                         <div className={"px-4 py-2"}>
                             <form onSubmit={addProduct}>
                                 <p className={"text-xl "}>Product Name</p>
-                                <input type={"text"} className={"w-full border border-black rounded-lg px-2 py-1"} id={"name"}/>
+                                <input type={"text"} className={"w-full border border-black px-2 py-1"} id={"name"} required={true} />
                                 <p className={"text-xl"}>Product Price</p>
-                                <input type={"text"} className={"w-full border border-black rounded-lg px-2 py-1"} id={"price"}/>
+                                <input type={"text"} className={"w-full border border-black px-2 py-1"} id={"price"} required={true} />
                                 <p className={"text-xl"}>Product Category</p>
                                 <select
-                                    className="w-full p-1 border border-black rounded-md outline-none appearance-none mr-8"
+                                    className="w-full p-2 border border-black outline-none appearance-none mr-8"
                                     id={"category"}
                                 >
                                     {allCategoryNames.map((category) => (
                                         <option value={allCategoryIDs[allCategoryNames.indexOf(category)]}>{category}</option>
                                     ))}
                                 </select>
-                                <button className={"bg-green-300 text-xl py-1 px-4 rounded-lg mt-4"} type={'submit'}>Add Product</button>
+                                <button className={'text-white w-full h-[50px] bg-[#BC4C2A] my-1 mt-3 px-4 text-xl'} type={'submit'}>Add Product</button>
+                                <button className={'text-white w-full h-[50px] bg-black my-1 px-4 text-xl'} onClick={() => setAddProductModal(false)}>Close</button>
                             </form>
                         </div>
                     </div>
@@ -110,14 +112,17 @@ export default function VendorHome() {
             }
             <div>
                 <div className={'flex item-center justify-between'}>
-                    <p className={'text-2xl pl-5 pt-5'}>Your products - </p>
-                    <div>
-                        <button className={'bg-green-300 text-xl p-2 px-5 border border-black rounded-lg mt-5 mr-10'} onClick={()=>{setAddProductModal(true)}}>Add Product</button>
+                    <div className={'flex'}>
+                        <p className={'text-[30px] px-3'}>Your Products</p>
+                        <div className={'py-2 border-black rounded-full border px-2 border-1 cursor-pointer'} onClick={()=>{setAddProductModal(true)}}><AddSVG/></div>
                     </div>
                 </div>
-                <div className={'grid grid-cols-2 pt-5'}>
+                <div className={'pt-5'}>
                 {allProducts.map((product) => (
-                    <div className={'px-2 py-2'}><VendorProductCard product={product} /></div>
+                    <div className={'px-2 py-2'}>
+                        <VendorProductCard product={product} />
+                        <hr className={'border border-1 border-gray-300 mt-10 mx-10'}/>
+                    </div>
                 ))}
                 </div>
             </div>

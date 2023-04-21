@@ -55,7 +55,7 @@ export default function ProductCard({product}) {
                             <p className={'h-[50px] w-[20px] text-center pt-3  text-xl'}>{quantity}</p>
                             <button className={'h-[50px] w-[80px] text-2xl'} onClick={()=>{if(quantity!=99) setQuantity(quantity+1)}}>+</button>
                         </div>
-                        <button onClick={()=>{addToCart();setAdded(false); setQuantity(1)}} className={'test-white w-[220px] h-[50px] bg-[#BC4C2A] my-2 px-4 text-xl'}>Add</button>
+                        <button onClick={()=>{addToCart();setAdded(false); setQuantity(1)}} className={'text-white w-[220px] h-[50px] bg-[#BC4C2A] my-2 px-4 text-xl'}>Add</button>
                     </div>
                 </div>}
             <div className={'flex flex-col items-center '}>
