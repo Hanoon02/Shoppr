@@ -1,6 +1,6 @@
 import React from "react";
-import HighlightProduct from "../../Components/HighlightProduct";
-import HighlightCategory from "../../Components/HighlightCategory";
+import HighlightProduct from "../../Components/Card/HighlightProduct";
+import HighlightCategory from "../../Components/Card/HighlightCategory";
 
 export default function Highlights(){
     return(

@@ -1,9 +1,9 @@
 import React from "react";
-import NavBar from "../../Components/NavBar";
+import NavBar from "../../Components/App/NavBar";
 import BestSeller from "./BestSeller";
 import Highlights from "./Highlights";
 import Info from "./Info";
-import Footer from "../../Components/Footer";
+import Footer from "../../Components/App/Footer";
 
 export default function HomePage(){
     return(

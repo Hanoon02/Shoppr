@@ -1,6 +1,6 @@
 import React, {useState, useContext} from "react";
 import axios from "axios";
-import loginContext from "../Context/loginContext";
+import loginContext from "../../Context/Login/loginContext";
 import {useNavigate} from "react-router-dom";
 
 export default function Portal(){
@@ -90,15 +90,15 @@ export default function Portal(){
     }
 
     return(
-        <div className={'mx-[100px] mt-10'}>
-            <div className={'pt-[100px] pb-[10px]'}>
+        <div className={'mx-[100px] my-10 border py-5 pl-10 pr-5 shadow-md'}>
+            <div className={'pb-[10px]'}>
                 <div className={'flex'}>
                     {!signup ?
                         type === 'customer' ? <p className={'text-[30px] font-bold'}>Customer Login</p> : <p className={'text-[30px] font-bold'}>Vendor Login</p>
                         :
                         type === 'customer' ? <p className={'text-[30px] font-bold'}>Customer Signup</p> : <p className={'text-[30px] font-bold'}>Vendor Signup</p>
                     }
-                    <button className={'border border-1 border-[#BC4C2A] py-3 px-10 ml-5'} onClick={handlePortalToggle}>{signup ? 'Login' : 'Signup'}</button>
+                    <button className={'border border-1 border-[#BC4C2A] rounded-3xl px-3 ml-5'} onClick={handlePortalToggle}>{signup ? 'Login' : 'Signup'}</button>
                 </div>
                 {loggedIn && <p className={'text-red-500 text-center'}>Invalid Username or Password</p>}
             </div>

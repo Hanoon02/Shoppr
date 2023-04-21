@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import ProductCard from "../../Components/ProductCard";
-import NavBar from "../../Components/NavBar";
-import Footer from "../../Components/Footer";
+import ProductCard from "../../Components/Card/ProductCard";
+import NavBar from "../../Components/App/NavBar";
+import Footer from "../../Components/App/Footer";
 
 
 export default function ShopAll(){

@@ -1,12 +1,11 @@
-import LoginPage from "./Pages/Login";
+import LoginPage from "./Pages/Login/Login";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import HomePage from "./Pages/Home/Home";
-import VendorHome from "./Pages/VendorHome";
-import LoginState from "./Context/loginState";
-import Cart from "./Pages/Cart";
-import ProfilePage from "./Pages/Profile";
+import VendorHome from "./Pages/VendorHome/VendorHome";
+import LoginState from "./Context/Login/loginState";
+import Cart from "./Pages/Cart/Cart";
+import ProfilePage from "./Pages/Profile/Profile";
 import ShopAll from "./Pages/ShopAll/ShopAll";
-import Footer from "./Components/Footer";
 
 function App() {
   return (

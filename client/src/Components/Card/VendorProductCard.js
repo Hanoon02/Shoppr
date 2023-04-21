@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import * as URL from "../Config/urls";
+import * as URL from "../../Config/urls";
 
 export default function VendorProductCard({product}) {
     const [productCategory, setProductCategory] = useState('');

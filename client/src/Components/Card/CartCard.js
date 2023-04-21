@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import loginContext from "../Context/loginContext";
+import loginContext from "../../Context/Login/loginContext";
 import axios from "axios";
 
 export default function CartCard({product}) {

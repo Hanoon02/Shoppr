@@ -1,9 +1,9 @@
 import React, {useEffect, useState, useContext} from "react";
-import NavBar from "../Components/NavBar";
-import loginContext from "../Context/loginContext";
+import NavBar from "../../Components/App/NavBar";
+import loginContext from "../../Context/Login/loginContext";
 import axios from "axios";
-import * as URL from "../Config/urls";
-import VendorProductCard from "../Components/VendorProductCard";
+import * as URL from "../../Config/urls";
+import VendorProductCard from "../../Components/Card/VendorProductCard";
 
 export default function VendorHome() {
     const [allProducts, setAllProducts] = useState([]);

@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import BestSellerCard from "../../Components/BestSellerCard";
+import BestSellerCard from "../../Components/Card/BestSellerCard";
 export default function BestSeller(){
     return(
         <>
