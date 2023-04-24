@@ -62,7 +62,7 @@ export default function VendorProductCard({product}) {
 
                 <div className={'flex items-center justify-evenly'} onClick={()=>setOptions(true)}>
                     <div className={'w-[400px] h-[500px] bg-[#F6F3EF] grid content-center justify-center'}>
-                        <img className={'w-[300px] h-[300px]'} src={'https://assets.stickpng.com/images/580b57fbd9996e24bc43bfbf.png'} alt={product.Product_Name} />
+                        <img className={'w-[400px] h-[250px]'} src={'https://www.pngmart.com/files/15/JBL-Audio-Speakers-PNG-Background-Image.png'} alt={product.Product_Name} />
                     </div>
                     <div className={'flex items-start flex-col'}>
                         {!edit ?<div>
@@ -100,7 +100,7 @@ export default function VendorProductCard({product}) {
                                         </select>
                                     </div>
                                 </div>
-                                <button className={'border border-black border-1 text-black w-[300px] h-[50px] bg-[#F6F3EF] my-1 px-4 text-xl'} type={'submit'}>Change</button>
+                                <button className={'border border-black border-1 text-black w-[300px] h-[50px] bg-[#F6F3EF] mb-1 px-4 text-xl'} type={'submit'}>Change</button>
                             </form>
                         </div>
                         }

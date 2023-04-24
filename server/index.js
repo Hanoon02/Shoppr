@@ -12,7 +12,7 @@ app.use(cors())
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'hanoon2002',
+    password: '',
     database: 'shoppr'
 });
 
@@ -152,6 +152,16 @@ app.get('/cart/products' , (req, res) => {
     );
 });
 
+app.get('/cart/total' , (req, res) => {
+    const customer_id = req.query.id;
+    const q = 'SELECT SUM(Product.Price * Cart.Quantity) AS Total FROM shoppr.product INNER JOIN shoppr.cart ON Product.Product_ID = Cart.Product_ID WHERE Cart.Cart_ID = ?';
+    db.query(q, [customer_id], (err, result) => {
+            if(err) throw err;
+            res.send(result);
+        }
+    );
+});
+
 app.post('/cart/add', express.json(), (req, res) => {
     const productID = req.body.params.productID;
     const cartID = req.body.params.userID;
@@ -164,15 +174,16 @@ app.post('/cart/add', express.json(), (req, res) => {
     );
 });
 
-app.delete('/cart/remove', express.json(), (req, res) => {
-    const productID = req.query.productID;
-    const cartID = req.query.userID;
-    const q = 'DELETE FROM shoppr.cart WHERE Cart_ID = ? AND Product_ID = ?';
-    db.query(q, [cartID, productID], (err, result) => {
-            if (err) throw err;
-            res.send(result);
-        }
-    );
+app.get('/cart/remove', express.json(), (req, res) => {
+    // const productID = req.query.productID;
+    // const cartID = req.query.cartID;
+    // const q = 'DELETE FROM shoppr.cart WHERE Cart_ID = ? AND Product_ID = ?';
+    // db.query(q, [cartID, productID], (err, result) => {
+    //         if (err) throw err;
+    //         res.send(result);
+    //     }
+    // );
+
 });
 
 app.get('/orders' , (req, res) => {
