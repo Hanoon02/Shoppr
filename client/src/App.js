@@ -6,6 +6,7 @@ import LoginState from "./Context/Login/loginState";
 import Cart from "./Pages/Cart/Cart";
 import ProfilePage from "./Pages/Profile/Profile";
 import ShopAll from "./Pages/ShopAll/ShopAll";
+import Admin from "./Pages/Admin/Admin";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path={'/'} element={<LoginPage/>}/>
+                    <Route path={'/admin'} element={<Admin/>}/>
                     <Route path={'/home'} element={<HomePage/>}/>
                     <Route path={'/shopall'} element={<ShopAll/>}/>
                     <Route path={'/vendor'} element={<VendorHome/>}/>

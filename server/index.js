@@ -185,6 +185,152 @@ app.get('/orders' , (req, res) => {
     );
 });
 
+app.get('/test/create_get_user', (req, res) => {
+    const id = Math.floor(Math.random() * 1000000);
+    const name = req.query.name;
+    const username = req.query.name;
+    const password = req.query.name;
+    const address = req.query.name;
+    const payment = req.query.name;
+
+    db.beginTransaction((err) => {
+        if (err) throw err;
+        const insertQuery = "INSERT INTO shoppr.customer (Customer_ID, Customer_Name, Customer_Username, Customer_Password, Customer_Address, Customer_Payment) " +
+            "VALUES (?, ?, ?, ?, ?, ?)";
+        db.query(insertQuery, [id, name, username, password, address, payment], (err, insertResult) => {
+            if (err) {
+                return db.rollback(() => {
+                    throw err;
+                });
+            }
+            const selectQuery = "SELECT * FROM shoppr.customer WHERE Customer_ID = ?";
+            db.query(selectQuery, [id], (err, selectResult) => {
+                if (err) {
+                    return db.rollback(() => {
+                        throw err;
+                    });
+                }
+                db.commit((err) => {
+                    if (err) {
+                        return db.rollback(() => {
+                            throw err;
+                        });
+                    }
+                    res.send(selectResult);
+                });
+            });
+        });
+    });
+});
+
+app.get('/test/create_get_vendor', (req, res) => {
+    const id = Math.floor(Math.random() * 1000000);
+    const name = req.query.name;
+    const username = req.query.name;
+    const password = req.query.name;
+
+    db.beginTransaction((err) => {
+        if (err) throw err;
+        const insertQuery = "INSERT INTO shoppr.vendor (Vendor_ID, Vendor_Name, Vendor_Username, Vendor_Password) " +
+            "VALUES (?, ?, ?, ?)";
+        db.query(insertQuery, [id, name, username, password], (err, insertResult) => {
+            if (err) {
+                return db.rollback(() => {
+                    throw err;
+                });
+            }
+            const selectQuery = "SELECT * FROM shoppr.vendor WHERE Vendor_ID = ?";
+            db.query(selectQuery, [id], (err, selectResult) => {
+                if (err) {
+                    return db.rollback(() => {
+                        throw err;
+                    });
+                }
+                db.commit((err) => {
+                    if (err) {
+                        return db.rollback(() => {
+                            throw err;
+                        });
+                    }
+                    res.send(selectResult);
+                });
+            });
+        });
+    });
+});
+
+app.get('/test/create_get_product', (req, res) => {
+    const ProductID = Math.floor(Math.random() * 1000000);
+    const VendorID = Math.floor(Math.random() * 1000000);
+    const WarehouseID = Math.floor(Math.random() * 1000000);
+    const CategoryID = Math.floor(Math.random() * 1000000);
+    const price = Math.floor(Math.random() * 1000000);
+    const CategoryName = req.query.name;
+    const VendorName = req.query.name;
+    const VendorUsername = req.query.name;
+    const VendorPassword = req.query.name;
+    const WarehouseLocation = req.query.name;
+    const ProductName = req.query.name;
+
+    db.beginTransaction((err) => {
+        if (err) throw err;
+        const insertWarehouseQuery = "INSERT INTO shoppr.warehouse (Warehouse_ID, Location) " +
+            "VALUES (?, ?)";
+        db.query(insertWarehouseQuery, [WarehouseID, WarehouseLocation], (err, insertWarehouseResult) => {
+            if (err) {
+                return db.rollback(() => {
+                    throw err;
+                });
+            }
+            const insertCategoryQuery = "INSERT INTO shoppr.product_category (Category_ID, Category_Name) " +
+            "VALUES (?, ?)";
+            db.query(insertCategoryQuery, [CategoryID, CategoryName], (err, insertCategoryResult) => {
+                if (err) {
+                    return db.rollback(() => {
+                        throw err;
+                    });
+                }
+                const insertVendorQuery = "INSERT INTO shoppr.vendor (Vendor_ID, Vendor_Name, Vendor_Username, Vendor_Password) " +
+                "VALUES (?, ?, ?, ?)";
+                db.query(insertVendorQuery, [VendorID, VendorName, VendorUsername, VendorPassword], (err, insertVendorResult) => {
+                    if (err) {
+                        return db.rollback(() => {
+                            throw err;
+                        });
+                    }
+                    const insertProductQuery = "INSERT INTO shoppr.product (Product_ID, Product_Name, Price, Warehouse_ID, Vendor_ID, Category_ID) " +
+                    "VALUES (?, ?, ?, ?, ?, ?)";
+                    db.query(insertProductQuery, [ProductID, ProductName, price, WarehouseID, VendorID, CategoryID], (err, insertProductResult) => {
+                        if (err) {
+                            return db.rollback(() => {
+                                throw err;
+                            });
+                        }
+                        const selectQuery = "SELECT * FROM shoppr.product WHERE Product_ID = ?";
+                        db.query(selectQuery, [ProductID], (err, selectResult) => {
+                            if (err) {
+                                return db.rollback(() => {
+                                    throw err;
+                                }
+                            );
+                        }
+                        db.commit((err) => {
+                            if (err) {
+                                return db.rollback(() => {
+                                    throw err;
+                                });
+                            }
+                            res.send(selectResult);
+                        });
+                    });
+                });
+            });
+        });
+    });
+});
+});
+
+
 app.listen(8800, () => {
     console.log('Server is running on port 8800');
 });
