@@ -8,6 +8,7 @@ export default function MyOrders(){
     const [orders, setOrders] = useState([]);
     const info = useContext(loginContext);
     const id = info.state.id;
+    const address = info.state.address;
 
     useEffect(() => {
         fetchOrders();
@@ -32,7 +33,7 @@ export default function MyOrders(){
                 <p className={'text-2xl pt-5 pl-5'}>My Orders</p>
                 <div className={'grid grid-cols-2'}>{orders.map((order) => (
                     <div className={'pt-4 px-4'}>
-                        <OrderPreviewCard order={order} />
+                        <OrderPreviewCard order={order} address={address} />
                     </div>
                 ))}</div>
             </div>
