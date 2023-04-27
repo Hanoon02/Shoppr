@@ -9,7 +9,7 @@ export default function CartCard({product}) {
     const removeProduct = async () => {
         if(info.state.name!== '') {
             try {
-                const res = await axios.get(`http://localhost:8800/cart/remove`, {
+                const res = await axios.put(`http://localhost:8800/cart/remove`, {
                     params: {
                         productID: product.Product_ID,
                         cartID: userID

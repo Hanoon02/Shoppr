@@ -28,13 +28,13 @@ export default function MyOrders(){
     }
     return(
         <>
-            <div>
+            <div className={'pb-10'}>
                 <p className={'text-2xl pt-5 pl-5'}>My Orders</p>
-                {orders.map((order) => (
+                <div className={'grid grid-cols-2'}>{orders.map((order) => (
                     <div className={'pt-4 px-4'}>
                         <OrderPreviewCard order={order} />
                     </div>
-                ))}
+                ))}</div>
             </div>
         </>
     )

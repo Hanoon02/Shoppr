@@ -60,7 +60,7 @@ app.put('/products/update', (req, res) => {
     const categoryID = req.body.params.categoryID;
     const vendorID = req.body.params.vendorID;
     const warehouseID = 4;
-    console.error(productID, productName, productPrice, categoryID, vendorID, warehouseID);
+    // console.error(productID, productName, productPrice, categoryID, vendorID, warehouseID);
     const q = `UPDATE shoppr.product SET Product_Name = ?, Price = ?, Category_ID = ?, Vendor_ID = ?, Warehouse_ID = ? WHERE Product_ID = ?`;
     db.query(q, [productName, productPrice, categoryID, vendorID, warehouseID, productID], (err, result) => {
         if(err) throw err;
@@ -174,16 +174,25 @@ app.post('/cart/add', express.json(), (req, res) => {
     );
 });
 
-app.get('/cart/remove', express.json(), (req, res) => {
-    // const productID = req.query.productID;
-    // const cartID = req.query.cartID;
-    // const q = 'DELETE FROM shoppr.cart WHERE Cart_ID = ? AND Product_ID = ?';
-    // db.query(q, [cartID, productID], (err, result) => {
-    //         if (err) throw err;
-    //         res.send(result);
-    //     }
-    // );
+app.put('/cart/remove', express.json(), (req, res) => {
+    const productID = req.body.params.productID;
+    const cartID = req.body.params.cartID;
+    const q = 'UPDATE shoppr.cart SET Quantity = 0 WHERE Cart_ID = ? AND Product_ID = ?';
+    db.query(q, [cartID, productID], (err, result) => {
+            if (err) throw err;
+            res.send(result);
+        }
+    );
+});
 
+app.put('/cart/clear', express.json(), (req, res) => {
+    const cartID = req.body.params.id;
+    const q = 'UPDATE shoppr.cart SET Quantity = 0 WHERE Cart_ID = ?';
+    db.query(q, [cartID], (err, result) => {
+            if (err) throw err;
+            res.send(result);
+        }
+    );
 });
 
 app.get('/orders' , (req, res) => {
@@ -196,6 +205,17 @@ app.get('/orders' , (req, res) => {
     );
 });
 
+app.post('/orders/create', express.json(), (req, res) => {
+    const cartID = req.body.params.id;
+    const orderID = Math.floor(Math.random() * 1000000);
+    const cost = req.body.params.cost;
+    const q = 'INSERT INTO shoppr.orders (Order_ID, Order_Cost, CART_ID) VALUES (?, ?, ?)';
+    db.query(q, [orderID, cost, cartID], (err, result) => {
+            if (err) throw err;
+            res.send(result);
+        }
+    );
+});
 app.get('/test/create_get_user', (req, res) => {
     const id = Math.floor(Math.random() * 1000000);
     const name = req.query.name;

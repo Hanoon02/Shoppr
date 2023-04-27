@@ -3,13 +3,12 @@ import React from "react";
 export default function OrderPreviewCard({order}) {
     return(
         <>
-            <div className={'border border-black p-2 flex justify-between items-center '}>
-                <div className={'flex flex-col'}>
-                    <p className={'text-xl'}>Order ID: {order.Order_ID}</p>
-                    <p className={'text-xl'}>Total: {order.Order_Cost} $</p>
+            <div className={'border shadow-lg p-2 flex flex-col justify-center items-center '}>
+                <div className={'flex flex-col justify-center items-center '}>
+                    <p className={'text-[30px] px-2 text-[#BC4C2A]'}>${order.Order_Cost}</p><p>{order.Order_ID}</p>
                 </div>
                 <div className={'pr-4'}>
-                    <button className={'mr-5 bg-green-300 rounded-lg px-4 border border-black py-2 w-full'}>View</button>
+                    <button className={'text-white w-[220px] h-[50px] bg-[#BC4C2A] my-2 px-4 text-xl'}>View</button>
                 </div>
             </div>
         </>
