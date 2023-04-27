@@ -62,7 +62,7 @@ export default function VendorProductCard({product}) {
 
                 <div className={'flex items-center justify-evenly'} onClick={()=>setOptions(true)}>
                     <div className={'w-[400px] h-[500px] bg-[#F6F3EF] grid content-center justify-center'}>
-                        <img className={'w-[400px] h-[250px]'} src={'https://www.pngmart.com/files/15/JBL-Audio-Speakers-PNG-Background-Image.png'} alt={product.Product_Name} />
+                        <img className={'w-[400px] h-[250px]'} src={'https://static.vecteezy.com/system/resources/previews/008/475/692/original/modern-laptop-isolated-on-white-background-3d-illustration-free-png.png'} alt={product.Product_Name} />
                     </div>
                     <div className={'flex items-start flex-col'}>
                         {!edit ?<div>
